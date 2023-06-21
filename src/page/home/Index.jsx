@@ -19,7 +19,7 @@ const Home = () => {
         </div>
       </div>
       <div className="container bg-gray-800 mx-auto p-8 border shadow rounded-xl -mb-10 relative z-10">
-        <h2 className="text-3xl font-bold text-white">Keahlian Saya</h2>
+        <h2 className="text-3xl font-bold text-white">Portofolio Saya</h2>
       </div>
       <div className="bg-gray-200 p-20 relative z-0">
         <div className="container mx-auto grid xl:grid-cols-4 md:grid-cols-2 justify-items-center">
@@ -27,28 +27,53 @@ const Home = () => {
             link={
               'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
             }
-            name="HTML"
+            name="Aplikasi 1"
           />
           <PortofolioCard
             link={
               'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
             }
-            name="HTML"
+            name="Aplikasi 2"
           />
           <PortofolioCard
             link={
               'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
             }
-            name="HTML"
+            name="Aplikasi 3"
           />
           <PortofolioCard
             link={
               'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
             }
-            name="HTML"
+            name="Aplikasi 4"
+          />
+          <PortofolioCard
+            link={
+              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+            }
+            name="Aplikasi 4"
+          />
+          <PortofolioCard
+            link={
+              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+            }
+            name="Aplikasi 4"
+          />
+          <PortofolioCard
+            link={
+              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+            }
+            name="Aplikasi 4"
+          />
+           <PortofolioCard
+            link={
+              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+            }
+            name="Aplikasi 4"
           />
         </div>
       </div>
+      <div className='w-full h-20'></div>
     </Fragment>
   );
 };

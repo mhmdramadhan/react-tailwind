@@ -63,8 +63,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className='hidden xl:block'>
-          <button className='text-white bg-red-500 shadow-lg p-2 rounded-md font-medium'>Click Disini</button>
+        <div className='hidden xl:block md:block'>
+          <button className='text-white bg-red-500 shadow-lg p-2 rounded-md font-medium'>Hubungi Saya</button>
         </div>
       </div>
     </nav>
