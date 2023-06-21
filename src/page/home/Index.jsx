@@ -1,8 +1,11 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import gambarJumbotron from '../../assets/greeting.svg';
 import PortofolioCard from '../../components/PortfolioCard';
+import DataContext from '../../context/DataContext';
 
 const Home = () => {
+  const { portofolio } = useContext(DataContext);
+
   return (
     <Fragment>
       <div className="mx-auto p-20 grid grid-cols-1 xl:grid-cols-2 h-screen">
@@ -23,57 +26,20 @@ const Home = () => {
       </div>
       <div className="bg-gray-200 p-20 relative z-0">
         <div className="container mx-auto grid xl:grid-cols-4 md:grid-cols-2 justify-items-center">
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 1"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 2"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 3"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 4"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 4"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 4"
-          />
-          <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 4"
-          />
-           <PortofolioCard
-            link={
-              'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
-            }
-            name="Aplikasi 4"
-          />
+          {portofolio.map((item) => {
+            return (
+              <PortofolioCard
+                key={item.id}
+                link={
+                  'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+                }
+                name={item.name}
+              />
+            );
+          })}
         </div>
       </div>
-      <div className='w-full h-20'></div>
+      <div className="w-full h-20"></div>
     </Fragment>
   );
 };
