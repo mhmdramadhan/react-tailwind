@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import DataContext from '../../context/DataContext';
 
 const Tentang = () => {
-  const { initialTodos } = useContext(DataContext);
 
   return (
     <div className="grid grid-cols-2">
@@ -18,18 +17,6 @@ const Tentang = () => {
           pengembangan dan pembuatan sebuah aplikasi.
         </p>
       </div>
-      <dl className="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 mt-2">
-        {initialTodos.map((item) => {
-          return (
-            <div key={item.id} className="flex flex-col pb-3">
-              <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
-                {item.task}
-              </dt>
-              <dd className="text-lg font-semibold">yourname@flowbite.com</dd>
-            </div>
-          );
-        })}
-      </dl>
     </div>
   );
 };

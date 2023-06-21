@@ -22,8 +22,24 @@ const portofolio = [
 ];
 
 export const DataProvider = ({ children }) => {
+  const [user, setUser] = useState([]);
+
+  const fetchUserData = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setUser(data);
+      });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
-    <DataContext.Provider value={{ portofolio }}>
+    <DataContext.Provider value={{ portofolio, user }}>
       {children}
     </DataContext.Provider>
   );
