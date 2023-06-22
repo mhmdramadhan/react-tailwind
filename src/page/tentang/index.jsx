@@ -4,9 +4,9 @@ import DataContext from '../../context/DataContext';
 const Tentang = () => {
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 xl:grid-cols-2 m-20">
       <img
-        className="object-cover w-full h-max"
+        className="object-cover w-full h-max shadow rounded"
         src="https://img.panditfootball.com/large/Event%20Khusus/Tsubasa%20piss.jpg"
         alt="image description"
       />

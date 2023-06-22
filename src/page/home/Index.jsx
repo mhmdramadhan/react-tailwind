@@ -1,10 +1,44 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import gambarJumbotron from '../../assets/greeting.svg';
 import PortofolioCard from '../../components/PortfolioCard';
 import DataContext from '../../context/DataContext';
+import Loading from '../../components/Loading';
 
 const Home = () => {
   const { portofolio } = useContext(DataContext);
+
+  const [berita, setBerita] = useState([]);
+  const [isLoading, setIsloading] = useState(false);
+
+  const getBeritaKotaBogor = async () => {
+    setIsloading(false);
+    try {
+      const response = await fetch(
+        'https://api-splp.layanan.go.id/t/kotabogor.go.id/KotaBogor/1.0/berita?key=b3r1t4b0g0r',
+        {
+          method: 'GET',
+          headers: {
+            apikey:
+              'eyJ4NXQiOiJOVGRtWmpNNFpEazNOalkwWXpjNU1tWm1PRGd3TVRFM01XWXdOREU1TVdSbFpEZzROemM0WkE9PSIsImtpZCI6ImdhdGV3YXlfY2VydGlmaWNhdGVfYWxpYXMiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJic3dAa290YWJvZ29yLmdvLmlkIiwiYXBwbGljYXRpb24iOnsib3duZXIiOiJic3dAa290YWJvZ29yLmdvLmlkIiwidGllclF1b3RhVHlwZSI6bnVsbCwidGllciI6IlVubGltaXRlZCIsIm5hbWUiOiJCb2dvciBBcGxpa2FzaSBTdXBlciIsImlkIjoxMjY4LCJ1dWlkIjoiZmFmMzFiZGItOGNlMC00YTlmLWFmYWQtNDU1NzExZDY3YzY5In0sImlzcyI6Imh0dHBzOlwvXC9zcGxwLmxheWFuYW4uZ28uaWQ6NDQzXC9vYXV0aDJcL3Rva2VuIiwidGllckluZm8iOnsiVW5saW1pdGVkIjp7InRpZXJRdW90YVR5cGUiOiJyZXF1ZXN0Q291bnQiLCJncmFwaFFMTWF4Q29tcGxleGl0eSI6MCwiZ3JhcGhRTE1heERlcHRoIjowLCJzdG9wT25RdW90YVJlYWNoIjp0cnVlLCJzcGlrZUFycmVzdExpbWl0IjowLCJzcGlrZUFycmVzdFVuaXQiOm51bGx9fSwia2V5dHlwZSI6IlBST0RVQ1RJT04iLCJzdWJzY3JpYmVkQVBJcyI6W3sic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImtvdGFib2dvci5nby5pZCIsIm5hbWUiOiJLb3RhQm9nb3IiLCJjb250ZXh0IjoiXC90XC9rb3RhYm9nb3IuZ28uaWRcL0tvdGFCb2dvclwvMS4wIiwicHVibGlzaGVyIjoiYWRtaW5Aa290YWJvZ29yLmdvLmlkIiwidmVyc2lvbiI6IjEuMCIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifV0sInRva2VuX3R5cGUiOiJhcGlLZXkiLCJpYXQiOjE2ODEyNzAwNDcsImp0aSI6IjE0MDc0YmMzLWM3NzQtNDZlMi1iYWUzLTE0Y2YwMzUzMTJhMiJ9.vkhrMMKwlUqQK_OZ5_j-0bKXFKobxCyf6YV9WHkvAxWD-CNaDFy1GKKGuYbScKbFATDp0eytRBF1Yi8HRZ00OIzsMDSuVhVHj50fmSMGYu83MCc7639yrAhxcs1el1R8tRfGdYpsIgezoA_rKCivWLnenvWlRSadWnLUGiJsOmv8xwUSQdCkNISsgBkC0w1b0FkjeDzLQVkupI3JY9uR6sto0y1vl41AnaaFHBtfZY_iVswfqZ-D1SNUtsgUbwg89HL-E7G4m85R4pvhcGmAK15Oht4kBwu1k1cRhtjLKYHo6ohc1HXvnW9OCe2ycHc7tVETPFXvO7R5IWN1uDEq7Q==',
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(
+          `This is an HTTP error: The status is ${response.status}`
+        );
+      }
+      let responseData = await response.json();
+      setBerita(responseData['Berita Bogor']);
+      setIsloading(true);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getBeritaKotaBogor();
+  }, []);
 
   return (
     <Fragment>
@@ -39,7 +73,43 @@ const Home = () => {
           })}
         </div>
       </div>
-      <div className="w-full h-20"></div>
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto max-w-7x1">
+          <div className="flex flex-wrap w-full mb-4 p-4">
+            <div className="w-full mb-6 lg:mb-0">
+              <h1 className="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900">
+                Berita Kota Bogor
+              </h1>
+              <div className="h-1 w-20 bg-gray-500 rounded"></div>
+              {!isLoading && <Loading />}
+            </div>
+          </div>
+          <div className="flex flex-wrap -m-4">
+            {berita.slice(0, 6).map((item) => {
+              return (
+                <div key={item.postid} className="xl:w-1/3 md:w-1/2 p-4">
+                  <div className="bg-gray-200 p-6 rounded-lg">
+                    <img
+                      className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                      src={item.gambar}
+                      alt={item.judul}
+                    />
+                    <h3 className="tracking-widest text-gray-500 text-xs font-medium title-font">
+                      {item.tanggal}
+                    </h3>
+                    <h2 className="text-lg text-gray-600 font-medium title-font mb-4">
+                      {item.judul}
+                    </h2>
+                    <p className="leading-relaxed text-base">
+                      {item.konten.substring(0, 250)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </Fragment>
   );
 };
